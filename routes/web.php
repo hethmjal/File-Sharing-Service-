@@ -20,10 +20,9 @@ Route::get('/', function () {
 
 Route::post('/upload',[SharedFileController::class,'store'])->name('upload');
 
-Route::get('/success/{id}',[SharedFileController::class,'success'])->name('success');
-
-
-Route::get('/download-page/{id}',[SharedFileController::class,'download_page'])->name('download_page');
-Route::get('/download/{id}',[SharedFileController::class,'download'])->name('download');
-
-Route::get('/{code}',[SharedFileController::class,'short_link'])->name('short-link');
+Route::middleware('signed')->group(function () {
+    Route::get('/success/{id}',[SharedFileController::class,'success'])->name('success');
+    Route::get('/download-page/{id}',[SharedFileController::class,'download_page'])->name('download_page');
+    Route::get('/download/{id}',[SharedFileController::class,'download'])->name('download');
+    Route::get('/{code}',[SharedFileController::class,'short_link'])->name('short-link');
+});

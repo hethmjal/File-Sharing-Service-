@@ -12,7 +12,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     </head>
-    <body class="antialiased">
+    <body class="">
        <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
@@ -31,15 +31,14 @@
             </div>
           </nav>
        </header>
-       <div  class="mt-5 ml-3 ">
-
+       <div  class="d-flex flex-column align-items-center mt-5 ml-3 ">
+        <h1>Share your files</h1>
             <div class=" card col-md-5 col-10 form-card shadow ">
 
                 <div class="card-body">
                     <div class="text-right">
                     <form id="store_form" action="{{route('upload')}}" enctype="multipart/form-data" method="post">
                 
-                   
                         @csrf
 
                         <div class="form-floating mb-2">
@@ -77,7 +76,17 @@
                           </div>
                        </div>
 
+                       <div class="col-md">
 
+                        <div class="form-floating mb-2">
+                          <select name="" id="">
+                            <option value=""></option>
+                            <option value=""></option>
+                            <option value=""></option>
+                          </select>
+                          <label for="Message">Message </label>
+                        </div>
+                     </div>
                           <div class="form-group center">
                             <button style="text-align: center" type="submit" class="btn btn-primary">Upload  </button>
                           </div>

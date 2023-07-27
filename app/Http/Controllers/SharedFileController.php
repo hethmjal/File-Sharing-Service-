@@ -32,35 +32,38 @@ class SharedFileController extends Controller
             }
         }
         $code = Str::random();
-        $link = Link::create([
+        $short_link = Link::create([
             'shared_file_id' => $sharde_file->id,
             'link' => URL::to('/').'/'.'download-page'.$sharde_file->id,
             'short_link' => URL::to('/').'/'.$code,
             'code' =>$code,
         ]);
+        $link = URL::signedRoute('success',[ $sharde_file->id]);
 
-        return to_route('success', $sharde_file->id);
+        return Redirect::to($link);
 
     }
 
 
-    public function success($id){
-        $link = Link::where('shared_file_id',$id)->first();
+        public function success($id){
+        $link_short = Link::where('shared_file_id',$id)->first();
+        $link = URL::signedRoute('short-link',['code'=>$link_short->code]);
         return view('success',compact('id','link'));
     }
 
     public function short_link($code)
     {
-        $link = Link::where('code',$code)->first();
-
-        return Redirect::route('download_page',$link->shared_file_id);
+        $link_short = Link::where('code',$code)->first();
+        $link = URL::signedRoute('download_page',[$link_short->shared_file_id,'code'=>$link_short->code]);
+        return Redirect::to($link);
 
       
 
     }
 
     public function download_page($id){
-        return view('download_page',compact('id'));
+        $link = URL::signedRoute('download',[$id]);
+        return view('download_page',compact('link'));
     }
 
     

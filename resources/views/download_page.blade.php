@@ -31,13 +31,13 @@
             </div>
           </nav>
        </header>
-       <div  class="mt-5 ml-3 ">
+       <div  class="d-flex text-center justify-content-center mt-5 ml-3 ">
 
             <div class=" card col-md-5 col-10 form-card shadow ">
 
                 <div class="card-body">
                     <div class="text-right">
-                        <a href="{{route('download',$id)}}">download files</a>
+                        <a href="{{$link}}">download files</a>
 
                     </div>
     

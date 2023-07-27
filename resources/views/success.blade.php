@@ -31,17 +31,20 @@
             </div>
           </nav>
        </header>
-       <div  class="mt-5 ml-3 ">
+       <div  class="d-flex justify-content-center mt-5 ml-3 ">
 
             <div class=" card col-md-5 col-10 form-card shadow ">
 
                 <div class="card-body">
-                    <div class="text-right">
+                    <div class="">
 
                         <label for="">Download Link</label>
-                        <input  id="link" class="form-control" value="{{$link->short_link}}" type="text" readonly>
-                        <button onclick="myFunction()">Copy Link</button>
+                        <input  id="link" class="form-control" value="{{$link}}" type="text" readonly>
+                     
 
+                    </div>
+                    <div class="my-2">
+                      <button onclick="myFunction()">Copy Link</button>
                     </div>
     
                 </div>
