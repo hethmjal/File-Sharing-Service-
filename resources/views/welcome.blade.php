@@ -45,7 +45,7 @@
                             <input type="file" class="form-control" name="shared_files[]" id="file" multiple>
                             <label for="file">Upload File</label>
                           </div>
-                       
+                    {{--    
                        <div class="col-md">
 
                           <div class="form-floating mb-2">
@@ -60,7 +60,7 @@
                             <input type="email"  name="sender_email" placeholder="your email" class="form-control" id="senderEmail">
                             <label for="senderEmail">Your Email</label>
                           </div>
-                       </div>
+                       </div> --}}
                        <div class="col-md">
 
                           <div class="form-floating mb-2">
@@ -76,7 +76,7 @@
                           </div>
                        </div>
 
-                       <div class="col-md">
+                    {{--    <div class="col-md">
 
                         <div class="form-floating mb-2">
                           <select name="" id="">
@@ -85,7 +85,7 @@
                             <option value=""></option>
                           </select>
                           <label for="Message">Message </label>
-                        </div>
+                        </div> --}}
                      </div>
                           <div class="form-group center">
                             <button style="text-align: center" type="submit" class="btn btn-primary">Upload  </button>

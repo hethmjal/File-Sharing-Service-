@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+
 Route::post('/upload',[SharedFileController::class,'store'])->name('upload');
 
 Route::middleware('signed')->group(function () {

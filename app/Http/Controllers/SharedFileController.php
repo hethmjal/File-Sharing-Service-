@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\FileDownloaded;
 use App\Models\File;
 use App\Models\Link;
 use App\Models\SharedFile;
@@ -31,6 +32,8 @@ class SharedFileController extends Controller
 
             }
         }
+
+        
         $code = Str::random();
         $short_link = Link::create([
             'shared_file_id' => $sharde_file->id,
@@ -40,8 +43,9 @@ class SharedFileController extends Controller
         ]);
         $link = URL::signedRoute('success',[ $sharde_file->id]);
 
+        event(new FileDownloaded($sharde_file));
         return Redirect::to($link);
-
+        
     }
 
 
@@ -70,7 +74,7 @@ class SharedFileController extends Controller
     public function download($id)
     {
              //   return FacadesFile::files(public_path('uploads/files'))[0];
-        $shared_file = SharedFile::findOrFail($id);
+    //    $shared_file = SharedFile::findOrFail($id);
         $files = File::where('shared_file_id', $id)->pluck('path')->toArray();
       //  return $files;
         $zip = new \ZipArchive();
@@ -85,11 +89,13 @@ class SharedFileController extends Controller
             $zip->close();
            
         }
+        $shared_file = SharedFile::find($id);
+        $shared_file->files()->update(['count' => $shared_file->files()->first()->count+1 ]);
          return response()->download(public_path($fileName));
          //return to_route('successs', $shared_file->id);
 
     }
 
 
-   
+
 }

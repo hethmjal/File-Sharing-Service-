@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class File extends Model
 {
     use HasFactory;
-    protected $fillable = ['path','type','shared_file_id'];
+    protected $fillable = ['path','type','count','shared_file_id'];
 
     public function shared_file()
     {
