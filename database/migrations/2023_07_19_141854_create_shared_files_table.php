@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('title')->nullable();
             $table->text('message')->nullable();
        
-            $table->string('sender_email');
-            $table->string('recipient_email');
+            $table->string('sender_email')->nullable();
+            $table->string('recipient_email')->nullable();
 
             $table->timestamps();
         });

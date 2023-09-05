@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('path');
             $table->string('type');
+            $table->bigInteger('count')->default(0);
             $table->foreignId('shared_file_id')->constrained('shared_files');
             $table->timestamps();
         });

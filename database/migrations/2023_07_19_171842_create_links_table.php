@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('links', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('shared_file_id')->constrained('shared_files')->cascadeOnDelete();
             $table->string('short_link');
             $table->string('link');
+            $table->string('code');
             $table->timestamps();
         });
     }
